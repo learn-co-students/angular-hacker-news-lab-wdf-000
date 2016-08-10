@@ -1,0 +1,10 @@
+<div>
+  <h2>Top Stories</h2>
+
+  <ul>
+    <li ng-repeat="story in top.stories | startFrom:top.currPage*top.pageSize | limitTo:top.pageSize">
+      {{story.title}}
+    </li>
+  </ul>
+
+</div>
