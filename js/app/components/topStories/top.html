@@ -1,0 +1,13 @@
+
+<ul class="posts">
+  <li ng-repeat="post in top.posts  | filter:30 | startFrom:top.currentPage*top.pageSize | limitTo:pageSize">
+      <item id="post"></item>
+  </li>
+</ul>
+<button ng-disabled="top.currentPage == 0" ng-click="top.currentPage=top.currentPage-1">
+   << Previous
+</button>
+{{top.currentPage+1}}/{{top.numberOfPages()}}
+<button ng-disabled="top.currentPage >= top.filterPosts().length/top.pageSize - 1" ng-click="top.currentPage=top.currentPage+1">
+    Next >>
+</button>

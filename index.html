@@ -9,6 +9,21 @@
     <link rel="stylesheet" href="app.css" />
 </head>
 <body>
+	<div class="app" ng-app="app">
+		<a href="#/top">top</a>
+		<div ui-view></div>
+	</div>
+	
+	<script src="js/angular.js"></script>
+	<script src="js/angular-ui-router.js"></script>
+	<script src="js/app/app.js"></script>
 
+	<script src="js/app/components/topStories/top.ctrl.js"></script>
+	<script src="js/app/components/topStories/top.srv.js"></script>
+
+	<script src="js/app/components/post/post.ctrl.js"></script>
+	<script src="js/app/components/post/post.srv.js"></script>
+
+	<script src="js/app/components/item/item.comp.js"></script>
 </body>
 </html>
