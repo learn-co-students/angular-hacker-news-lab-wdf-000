@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="app.css" />
 </head>
 <body>
-
+  
+  <div align="center">
+    <h1>Hacker News (clone)</h1>
+  </div>
+  
+  <div ng-app="app" class="app">
+    <a href="#/top" ui-sref="top">Go to top</a>
+    <div ui-view></div>
+  </div>
+  
+  <script src="js/angular.js"></script>
+  <script src="js/angular-ui-router.js"></script>
+  <script src="js/app/app.js"></script>
 </body>
 </html>

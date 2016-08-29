@@ -1,0 +1,7 @@
+<h3>Top Stories</h3>
+
+<ul name="articles">
+  <li ng-repeat="article in top.articles">{{ article.title }} - - - by {{ article.by }}
+    <a href="{{ article.url }}">{{ article.id }}</a>
+  </li>
+</ul>
