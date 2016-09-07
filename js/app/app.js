@@ -1,50 +1,26 @@
 angular
-  .module('app', ['ui.router'])
-  .service('Top30Service', function ($http) {
-    this.getIds = function () {
-      return $http.get('https://hacker-news.firebaseio.com/v0/topstories.json')
-    }
-    var self = this;
-    this.getArticles = function() {
-      var ids = $http.get('https://hacker-news.firebaseio.com/v0/topstories.json').data
-      self.articles = []
-      ids.forEach(function (id) {
-	self.articles.push($http.get('https://hacker-news.firebaseio.com/v0/item/' + id + '.json'))
-      });
-      return self.articles
-    }
-
-    this.getArticle = function(id) {
-      return $http.get('https://hacker-news.firebaseio.com/v0/item/' + id + '.json').data;
-    }
-  })
-  .controller('TopController', function() {
-    this.articles = Top30Articles.getArticles();
-  })
-  .controller('PostsController', function() {
-  //
-  })
-  .config(function ($stateProvider, $httpProvider) {
-    $httpProvider.useApplyAsync(true);
+  .module('app',['ui.router', 'ngSanitize'])
+  .config(function($stateProvider, $urlRouterProvider){
     $stateProvider
-      .state('top', {
+      .state('top',{
 	url: '/top',
 	templateUrl: 'views/top.html',
 	controller: 'TopController as top',
-	// resolve: {
-	//   articles: function ($route, Top30Service) {
-	//     return Top30Service.getArticles().data;
-	//   }
-	// }
+	resolve: {
+	  articles: function(TopArticles){
+	    return TopArticles.getArticles();
+	  } 
+	}
       })
-      .state('post', {
-	url: '/post/:id',
-	templateUrl: 'views/post.html',
-	controller: 'PostsController as post',
-	// resolve: {
-	//   article: function ($route) {
-	//     return Top30Service.getArticle($route.current.params.id);
-	//   }
-	// }
-      })
-  })
+    .state('post', {
+      url: '/post/:id',
+      templateUrl: 'views/post.html',
+      controller: 'PostController as post',
+      resolve: {
+	post: function ($stateParams, PostsService) {
+	  return PostsService.getPost($stateParams.id);
+	}
+      }
+    });
+    $urlRouterProvider.otherwise('/top');
+  });
