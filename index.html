@@ -2,13 +2,29 @@
 <html>
 <head>
 	<meta charset="utf-8">
-
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Angular Application</title>
-
     <link rel="stylesheet" href="app.css" />
 </head>
 <body>
-
+  
+  <div align="center">
+    <h1>Hacker News (clone)</h1>
+  </div>
+  
+  <div ng-app="app" class="app">
+    <a href="#/top" ui-sref="top">Go to top</a>
+    <div ui-view></div>
+  </div>
+  
+  <script src="js/angular.js"></script>
+  <script src="js/angular-sanitize.js"></script>
+  <script src="js/angular-ui-router.js"></script>
+  <script src="js/app/app.js"></script>
+  <script src="js/app/controllers/TopController.js"></script>
+  <script src="js/app/controllers/PostController.js"></script>
+  <script src="js/app/components/Item.js"></script>
+  <script src="js/app/services/TopArticles.js"></script>
+  <script src="js/app/services/PostsService.js"></script>
 </body>
 </html>
