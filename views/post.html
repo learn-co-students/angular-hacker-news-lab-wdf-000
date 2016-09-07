@@ -1,9 +1,7 @@
-<a href="{{ post.data.url }}" target="_blank">
-  {{ post.data.title }}
-</a>
-<p>
-  {{ post.data.descendants }} comments {{ post.data.score }} points
-</p>
+
+<h4>{{ post.data.title }}</h4>
+<a href="{{ post.data.url }}" target="_blank">{{ post.data.url }}</a>
+<p>{{ post.data.descendants }} comments {{ post.data.score }} points</p>
 
 <ul class="comments">
   <li ng-repeat="comment in post.data.kids">
